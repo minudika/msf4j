@@ -16,21 +16,26 @@
 
 package org.wso2.msf4j.example;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.CookieParam;
+import javax.ws.rs.Encoded;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.core.Response;
 
 /**
  * Hello service resource class.
  */
 @Path("/hello")
 public class HelloService {
-
-    @GET
-    @Path("/{name}")
-    public String hello(@PathParam("name") String name) {
-        System.out.println("Hello");
-        return "Hello " + name;
+    @POST
+    @Path("/message")
+    @Consumes("application/json")
+    public Response hello(Message message) {
+        String msg = "Name = " + message.getName() + " , ID = " + message.getId();
+        System.out.println(msg);
+        return Response.ok().entity(msg).build();
     }
 }
