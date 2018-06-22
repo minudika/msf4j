@@ -56,8 +56,15 @@ public class FormService {
     @POST
     @Path("/simpleFormWithFormParam")
     @Consumes({ MediaType.APPLICATION_FORM_URLENCODED, MediaType.MULTIPART_FORM_DATA })
-    public Response simpleFormWithFormParam(@FormParam("age") Long age, @FormParam("name") String name) {
-        return Response.ok().entity("Name and age " + name + ", " + age).build();
+    public Response simpleFormWithFormParam(@FormParam("from") String from, @FormParam("to") String to,
+                                            @FormParam("subject") String subject, @FormParam("text") String text) {
+        System.out.println("from : " + from);
+        System.out.println("to : " + to);
+        System.out.println("subject : " + subject);
+        System.out.println("text : " + text);
+        return Response.ok().entity(String.format("from : %s, to : %s, subject : %s, " +
+                "text : %s", from, to, subject, text))
+                .build();
     }
 
     @POST
