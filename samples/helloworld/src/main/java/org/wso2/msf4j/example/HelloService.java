@@ -34,7 +34,23 @@ public class HelloService {
     @Path("/message")
     @Consumes("application/json")
     public Response hello(Message message) {
-        String msg = "Name = " + message.getName() + " , ID = " + message.getId();
+        //String msg = "Name = " + message.getName() + " , ID = " + message.getId();
+        String msg1 = "" +
+                "{\"event\":" +
+                "   {" +
+                "       \"name\":\"" + message.getName() + "\"," +
+                "       \"id\":" + message.getId() + "" +
+                "   }" +
+                "}";
+
+        String msg2 = "" +
+                "<event>" +
+                "<name>" + message.getName() + "</name>" +
+                "<id>" + message.getId() + "</id>" +
+                "</event>";
+
+        String msg = msg1;
+        //String msg = msg2;
         System.out.println(msg);
         return Response.ok().entity(msg).build();
     }
