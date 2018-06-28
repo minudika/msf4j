@@ -41,7 +41,7 @@ public class HelloService {
                 "       \"name\":\"" + message.getName() + "\"," +
                 "       \"id\":" + message.getId() + "" +
                 "   }" +
-                "}";
+                 "}";
 
         String msg2 = "" +
                 "<event>" +
